@@ -217,6 +217,11 @@ class Agent(Named, SupportsDeepcopyAndPickle, AgentCallbackMixin, Generic[SymTyp
                 0 if perturbation is None else perturbation
             )
 
+        # check if disturbances in mpc-problem.
+        # if so, then add them to additional pars
+        for d in mpc.disturbances:
+            additional_pars[d] = vals0[d]
+        
         # create pars and vals0
         pars = self._get_parameters()
         if pars is None:

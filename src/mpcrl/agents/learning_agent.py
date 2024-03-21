@@ -33,6 +33,7 @@ class LearningAgent(
         update_strategy: Union[int, UpdateStrategy],
         learnable_parameters: LearnableParametersDict[SymType],
         exploration: Optional[ExplorationStrategy] = None,
+        batch_size: Optional[int] = None,
         experience: Union[None, int, ExperienceReplay[ExpType]] = None,
         **kwargs: Any,
     ) -> None:
@@ -67,7 +68,7 @@ class LearningAgent(
         if experience is None:
             experience = ExperienceReplay(maxlen=1)
         elif isinstance(experience, int):
-            experience = ExperienceReplay(maxlen=experience, sample_size=experience)
+            experience = ExperienceReplay(maxlen=experience, sample_size=batch_size)
         self._experience = experience
         if exploration is not None:
             self._exploration = exploration

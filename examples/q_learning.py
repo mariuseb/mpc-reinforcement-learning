@@ -162,7 +162,7 @@ learnable_pars = LearnableParametersDict[cs.SX](
     )
 )
 
-env = MonitorEpisodes(TimeLimit(LtiSystem(), max_episode_steps=int(5e3)))
+env = MonitorEpisodes(TimeLimit(LtiSystem(), max_episode_steps=int(2e3)))
 agent = Log(  # type: ignore[var-annotated]
     RecordUpdates(
         LstdQLearningAgent(
@@ -223,3 +223,4 @@ axs[2, 0].set_ylabel("$A$")
 axs[2, 1].set_ylabel("$B$")
 
 plt.show()
+print(mpc)

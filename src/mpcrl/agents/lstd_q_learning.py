@@ -54,6 +54,7 @@ class LstdQLearningAgent(
             None, dict[str, npt.ArrayLike], Collection[dict[str, npt.ArrayLike]]
         ] = None,
         exploration: Optional[ExplorationStrategy] = None,
+        batch_size: Optional[int] = None,
         experience: Union[None, int, ExperienceReplay[ExpType]] = None,
         warmstart: Literal["last", "last-successful"] = "last-successful",
         hessian_type: Literal["none", "approx", "full"] = "approx",
@@ -142,6 +143,7 @@ class LstdQLearningAgent(
             optimizer=optimizer,
             fixed_parameters=fixed_parameters,
             exploration=exploration,
+            batch_size=batch_size,
             experience=experience,
             warmstart=warmstart,
             use_last_action_on_fail=use_last_action_on_fail,

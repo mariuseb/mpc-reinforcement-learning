@@ -102,8 +102,8 @@ class Wrapper(SupportsDeepcopyAndPickle, CallbackMixin, Generic[SymType]):
 
     def __getattr__(self, name: str) -> Any:
         """Reroutes attributes to the wrapped agent instance."""
-        if name.startswith("_"):
-            raise AttributeError(f"Accessing private attribute '{name}' is prohibited.")
+        #if name.startswith("_"):
+        #    raise AttributeError(f"Accessing private attribute '{name}' is prohibited.")
         return getattr(self.agent, name)
 
     def __str__(self) -> str:
